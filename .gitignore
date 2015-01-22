@@ -4,3 +4,9 @@ pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.next
 release.properties
+*.iml
+.DS_Store
+.idea
+.classpath
+.project
+.settings
