@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+    <camelContext id="weathermap" xmlns="http://camel.apache.org/schema/spring" trace="false">
+        <package>de.predic8.vacation</package>
+        <dataFormats>
+            <xmljson id="xmljson"/>
+        </dataFormats>
+    </camelContext>
+
+    <bean id="activemq" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+    </bean>
+    
+</beans>
