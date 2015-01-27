@@ -5,7 +5,7 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 
-    <camelContext id="weathermap" xmlns="http://camel.apache.org/schema/spring" trace="false">
+    <camelContext id="vacation" xmlns="http://camel.apache.org/schema/spring" trace="false">
         <package>de.predic8.vacation</package>
         <dataFormats>
             <xmljson id="xmljson"/>
