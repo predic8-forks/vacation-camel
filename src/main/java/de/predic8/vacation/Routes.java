@@ -17,7 +17,7 @@ public class Routes extends RouteBuilder {
     public void configure() throws Exception {
 
         from("jetty:http://localhost:8081/vacation/")
-        		.id("book") 
+        			.routeId("beach-or-ski")
                 .unmarshal( "xmljson")
                 .setHeader( "city", xpath("//city/text()"))
                 .setHeader( "name", xpath("//name/text()"))
@@ -30,7 +30,7 @@ public class Routes extends RouteBuilder {
                 .to( "xslt:weather2booking.xsl")
                 .choice()
 	                .when( header( "count").isNotEqualTo( "1"))
-	                    .setHeader( HTTP_RESPONSE_CODE, constant("400"))
+	                    .setHeader( HTTP_RESPONSE_CODE, constant("404"))
 	                    .setBody().simple(" { \"message\" : \"city not found\" }")
 	                    .endChoice()
 	                .when( xpath( "//temp > 20"))
@@ -41,11 +41,8 @@ public class Routes extends RouteBuilder {
 	                    .inOnly( "activemq:ski")
 	                    .setBody().simple( "{ \"message\" : \"You go skiing!\" }")
 	                    .endChoice()	
-	                .end();
+	                .end();	
         
-        String qn = "startxy";
-        from("")
-        .to("jms:" + t);
 
 
     }
